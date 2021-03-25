@@ -14,8 +14,8 @@ public class TikTakToeGame {
         int initialPlayer = (random.nextFloat()<0.5)?0:1;
         System.out.println("Comenzará el jugador "+(initialPlayer+1)+" : "+playersName[initialPlayer]);
         
-        Board.setPos(0,1,'X');
-        Board.setPos(2,1,'O');
+        Board.setPos(1,'X');
+        Board.setPos(9,'O');
         Board.printBoard();
         Board.reset();
         Board.printBoard();
@@ -29,34 +29,33 @@ public class TikTakToeGame {
 
     static class Board {
 
-        static char[][] pos = {
-            {' ',' ',' '},
-            {' ',' ',' '},
-            {' ',' ',' '}
+        static char[] pos = {
+            '1','2','3',
+            '4','5','6',
+            '7','8','9'
         };
 
         
         static public void printBoard(){
-            System.out.println(" "+pos[0][0]+" | "+pos[0][1]+" | "+pos[0][2]);
+            System.out.println();
+            System.out.println(" "+pos[0]+" | "+pos[1]+" | "+pos[2]);
             System.out.println("---+---+---");
-            System.out.println(" "+pos[1][0]+" | "+pos[1][1]+" | "+pos[1][2]);
+            System.out.println(" "+pos[3]+" | "+pos[4]+" | "+pos[5]);
             System.out.println("---+---+---");
-            System.out.println(" "+pos[2][0]+" | "+pos[2][1]+" | "+pos[2][2]); 
+            System.out.println(" "+pos[6]+" | "+pos[7]+" | "+pos[8]); 
             System.out.println();
         }
 
-        static public void setPos(int posX, int posY, char move){
-            pos[posX][posY] = move;
+        static public void setPos(int there, char move){
+            if (0<there&&there<10)
+                pos[there-1] = move;
         }
 
         static public void reset(){
-            for (int i=0; i<3; i++){
-                for (int j=0; j<3; j++)
-                    pos[i][j]=' ';
+            for (int i=0; i<10; i++){
+                pos[i]=' ';
             }
         }
-
-
-
     }
+
 }
