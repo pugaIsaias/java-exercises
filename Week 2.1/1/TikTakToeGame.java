@@ -25,6 +25,7 @@ public class TikTakToeGame {
 
     static class Game {
 
+
     }
 
     static class Board {
@@ -52,8 +53,8 @@ public class TikTakToeGame {
         }
 
         static public void reset(){
-            for (int i=0; i<10; i++){
-                pos[i]=' ';
+            for (int i=1; i<10; i++){
+                setPos(i,' ');
             }
         }
     }
