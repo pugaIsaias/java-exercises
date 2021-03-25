@@ -15,8 +15,9 @@ public class TikTakToeGame {
         Random random = new Random();
         int initialPlayer = (random.nextFloat()<0.5)?0:1;
         System.out.println("Comenzará el jugador "+(initialPlayer+1)+" : "+playersName[initialPlayer]);
-
-        board.printBoard();
+        Board.setPos(0,1,'X');
+        Board.setPos(2,1,'O');
+        Board.printBoard();
     }
 
     class Game {
@@ -38,6 +39,10 @@ public class TikTakToeGame {
             System.out.println(" "+pos[1][0]+" | "+pos[1][1]+" | "+pos[1][2]);
             System.out.println("---+---+---");
             System.out.println(" "+pos[2][0]+" | "+pos[2][1]+" | "+pos[2][2]); 
+        }
+
+        static public void setPos(int posX, int posY, char move){
+            pos[posX][posY] = move;
         }
 
 
