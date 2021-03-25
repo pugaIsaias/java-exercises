@@ -18,6 +18,7 @@ public class TikTakToeGame {
         Board.setPos(0,1,'X');
         Board.setPos(2,1,'O');
         Board.printBoard();
+        input.close();
     }
 
     class Game {
