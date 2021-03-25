@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class TikTakToeGame {
 
-    static Board board = new Board();
-
     public static void main (String[] args){
         String[] playersName = new String[2];
         Scanner input= new Scanner(System.in); 
@@ -15,13 +13,17 @@ public class TikTakToeGame {
         Random random = new Random();
         int initialPlayer = (random.nextFloat()<0.5)?0:1;
         System.out.println("Comenzará el jugador "+(initialPlayer+1)+" : "+playersName[initialPlayer]);
+        
         Board.setPos(0,1,'X');
         Board.setPos(2,1,'O');
         Board.printBoard();
+        Board.reset();
+        Board.printBoard();
+
         input.close();
     }
 
-    class Game {
+    static class Game {
 
     }
 
@@ -44,6 +46,13 @@ public class TikTakToeGame {
 
         static public void setPos(int posX, int posY, char move){
             pos[posX][posY] = move;
+        }
+
+        static public void reset(){
+            for (int i=0; i<3; i++){
+                for (int j=0; j<3; j++)
+                    pos[i][j]=' ';
+            }
         }
 
 
