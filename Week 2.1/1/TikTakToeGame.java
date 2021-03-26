@@ -4,30 +4,23 @@ import java.util.Scanner;
 public class TikTakToeGame {
 
     public static void main (String[] args){
+        
         String[] playersName = new String[2];
         Scanner input= new Scanner(System.in); 
+        
         System.out.println("Ingrese nombre del jugador 1: ");
         playersName[0] = input.nextLine();
         System.out.println("Ingrese nombre del jugador 2: ");
         playersName[1] = input.nextLine();
+        
         Random random = new Random();
         int initialPlayer = (random.nextFloat()<0.5)?0:1;
+        int otherPlayer = (initialPlayer == 0)? 1: 0;
         System.out.println("Comenzará el jugador "+(initialPlayer+1)+" : "+playersName[initialPlayer]);
-        Board board = new Board();
-        board.setPos(1,'x');
-        board.setPos(2,'x');
-        board.setPos(3,'x');
-        board.printBoard();
-        char winner = Game.calculateWinner(board.getPos());
-        System.out.println("The winner is: "+winner);
-        board.reset();
-        board.setPos(1,'x');
-        board.setPos(2,'o');
-        board.setPos(3,'x');
-        winner = Game.calculateWinner(board.getPos());
-        System.out.println("The winner is: "+winner);
-        board.printBoard();
-
+        
+        Game game = new Game(playersName[initialPlayer],playersName[otherPlayer]);
+        game.gameLoop();
+        
         input.close();
     }
 
@@ -38,15 +31,49 @@ public class TikTakToeGame {
 class Game {
 
     private int turn = 0;
+    private String[] players = new String[2];
+    private static final char[] MARK = {'x','o'};
     private Board board;
 
     //constructor
-    public Game(){
+    public Game(String player1, String player2){
+        this.players[0] = player1;
+        this.players[1] = player2; 
         board = new Board();
     }
 
-    void isTurnOf(){
-        System.out.println((turn));
+    void printTurnOf(){
+        System.out.println("Turno de "+players[turn%2]+" y esta utiliza : "+MARK[turn%2]);
+    }
+
+    void printWinner(){
+        char mark = calculateWinner(board.getPos());
+        int number = (mark == 'x')?0:1;
+        System.out.println("El ganador es: "+ players[number]+"! | con : "+MARK[number]);
+    }
+
+    void gameLoop(){
+        Scanner input= new Scanner(System.in); 
+        int move;
+        while(calculateWinner(board.getPos())==' '){
+
+            printTurnOf();
+            this.board.printBoard();
+            move = input.nextInt();
+            if(!this.board.isValidPos(move)){
+                while(!this.board.isValidPos(move)){
+                    System.out.println("Movimiento invalido intente de nuevo.");
+                    move = input.nextInt();
+                    this.board.printBoard();
+                }
+            }
+            this.board.setPos(move, MARK[turn%2]);
+            this.turn++;
+
+        }
+        input.close();
+        this.board.printBoard();
+        printWinner();
     }
 
     char calculateWinner(char[] squares){
@@ -94,9 +121,15 @@ class Board {
         System.out.println();
     }
 
-    public void setPos(int there, char move){
-        if (0<there&&there<10)
-            pos[there-1] = move;
+    public boolean isValidPos(int there){
+        if(((pos[there-1]!='x') && (pos[there-1]!='o')) && ((0<there) && (there<10)))
+            return true;
+        return false;
+    }
+
+    public void setPos(int there, char mark){
+        if (isValidPos(there))
+            pos[there-1] = mark;
     }
 
     public void reset(){
