@@ -9,6 +9,9 @@ public class TaskList{
     private LinkedList<Task> tasks = new LinkedList<Task>();
 
     /* Your code here */
+    public TaskList(String name){
+        this.name = name;
+    }
 
     public boolean addTask(Task task){
         return this.tasks.add(task);
