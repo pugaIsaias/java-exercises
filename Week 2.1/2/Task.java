@@ -32,6 +32,8 @@ public class Task{
 
     public String getTaskDate(){
         /* Your code here */
+        simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(this.do_date);
     }
 
     public String toString(){
