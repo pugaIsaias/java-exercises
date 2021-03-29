@@ -12,6 +12,23 @@ public class Task{
     private SimpleDateFormat simpleDateFormat;
 
     /* Your code here */
+    public Task(String msg_reminder){
+        this.msg_reminder = msg_reminder;
+        this.do_date = new Date();
+    }
+
+    public Task(String msg_reminder, int priority, Date do_date){
+        this.msg_reminder = msg_reminder;
+        this.priority = priority;
+        this.do_date = do_date;
+    }
+
+    public Task(String msg_reminder, int priority, Date do_date, String notes){
+        this.msg_reminder = msg_reminder;
+        this.priority = priority;
+        this.do_date = do_date;
+        this.notes = notes;
+    }
 
     public String getNotes(){
         return this.notes;
