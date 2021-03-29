@@ -13,6 +13,11 @@ public class TaskList{
         this.name = name;
     }
 
+    public TaskList(String name, Task task){
+        this.name = name;
+        addTask(task);
+    }
+
     public boolean addTask(Task task){
         return this.tasks.add(task);
     }
