@@ -28,6 +28,10 @@ public class TaskList{
 
     public void printList(){
        /* Your code here */
+       System.out.println("======"+this.name+"======");
+       for(Task task:tasks){
+           System.out.println(task.toString());
+       }
     }
 
 }
