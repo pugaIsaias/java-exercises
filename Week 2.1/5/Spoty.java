@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Spoty {
 
     /** Used debe de crear un clon simple de Spotify, para ello debe de crear una clase llamada Spoty, 
@@ -42,7 +44,8 @@ public class Spoty {
     public void random()
     {
         /** No devuelve nada, pero selecciona una canción a reproducir, de forma aleatoria.  */
-
+        Random random = new Random();
+        this.playThisSong(1+random.nextInt(size));
     }
 
     public void playThisSong(int index)
