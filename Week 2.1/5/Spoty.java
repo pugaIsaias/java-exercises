@@ -6,10 +6,15 @@ public class Spoty {
          * la “base de datos” de su programa, debe de existir un método que inicie la reproducción de las 
          * canciones, y otros métodos para poder cambiar de canción en reproducción. Al inicio, ninguna 
          * canción se esta reproduciendo.  */
-        
+
+    private String [] songList;
+    private int nowPlaying = -1;
+    private int size;
+
     public Spoty(String songList)
     {
-        
+        this.songList = songList.split(":");
+        this.size = this.songList.length;
     }
     
     public String getActualSong() 
@@ -48,6 +53,17 @@ public class Spoty {
     {
         /** Debe de mostrar la lista de reproducción , mostrando que canción se está reproduciendo actualmente, 
          * en el siguiente ejemplo la canción con nombre: nombreCancion3 esta siendo reproducida.  */
-        return "";
+        String result ="";
+        for(int i=0; i<size; i++)
+        {
+            result+=(i+1)+". ";
+            if (this.nowPlaying == i)
+                result+= "[[ ";
+            result+=this.songList[i];
+            if (this.nowPlaying == i)
+                result+= " ]]";
+            result+= "\n";
+        }
+        return result;
     }
 }
