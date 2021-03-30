@@ -4,5 +4,6 @@ public class Testing {
        list.addFirst(1);
        list.addFirst(0);
        list.addLast(2);
+       System.out.println(list.toString());
    } 
 }

@@ -53,19 +53,19 @@ public class Slist<T>
     {
         if(this.isEmpty())
         {
-            return this.head;
+            return this.head.data;
         }
         Snode<T> aux = this.head;
         this.head= this.head.next;
         this.size--;
-        return aux;
+        return aux.data;
     }
 
     public T removeLast()
     {
         if(this.isEmpty())
         {
-            return this.head;
+            return this.head.data;
         }
         Snode<T> aux = this.head;
         Snode<T> prev = null;
@@ -76,7 +76,7 @@ public class Slist<T>
         }
         prev.next = null;
         this.size--;
-        return aux;
+        return aux.data;
     }
 
     public T remove(int Index)
@@ -102,14 +102,14 @@ public class Slist<T>
             prev.next = null;    
         }
         this.size--;
-        return aux;
+        return aux.data;
     }
 
     public String toString(){
         String result = "";
         Snode<T> aux = this.head;
         for (int i=0; i<this.size; i++){
-            result+=" "+aux.data || aux.data.toString()+" |";
+            result+=" "+aux.data.toString()+" |";
             aux = aux.next;
         }
         return result;
