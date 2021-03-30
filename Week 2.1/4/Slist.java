@@ -49,5 +49,16 @@ public class Slist<T>
         this.size++; 
     }
 
+    public T removeFirst(){
+        if(this.isEmpty())
+        {
+            return null;
+        }
+        Snode<T> aux = this.head;
+        this.head= this.head.next();
+        this.size--;
+        return aux;
+    }
+
 
 }
