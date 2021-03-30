@@ -79,8 +79,30 @@ public class Slist<T>
         return aux;
     }
 
-    public remove(int Index)
+    public T remove(int Index)
     {
+        if(this.isEmpty() && Index>this.size)
+        {
+            return null;
+        }
+        
+        Snode<T> aux = this.head;
+        Snode<T> prev = null;
+        for (int i=0; i<Index; i++)
+        {
+            prev = aux;
+            aux = aux.next;
+        }
 
+        if( aux.next != null){
+            prev.next = aux.next;
+        } 
+        else 
+        {
+            prev.next = null;    
+        }
+        this.size--;
+        return aux;
     }
+
 }
