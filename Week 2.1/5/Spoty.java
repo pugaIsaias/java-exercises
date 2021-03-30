@@ -20,7 +20,9 @@ public class Spoty {
     public String getActualSong() 
     {
         /**Devuelve el nombre de la canción que actualmente está reproduciéndose */
-        return "";
+        if (-1<this.nowPlaying && this.nowPlaying<=size)
+            return this.songList[this.nowPlaying];
+        return "No song selected";
     }
 
     public void next()
@@ -46,7 +48,7 @@ public class Spoty {
     public void playThisSong(int index)
     {
         /** No devuelve nada, pero pone en reproducción la canción que corresponda con el índice indicado. */
-        if (0<index && index<size)
+        if (0<index && index<size+1)
             this.nowPlaying = index-1;
     }
 
