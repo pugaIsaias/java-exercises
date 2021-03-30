@@ -52,12 +52,29 @@ public class Slist<T>
     public T removeFirst(){
         if(this.isEmpty())
         {
-            return null;
+            return this.head;
         }
         Snode<T> aux = this.head;
-        this.head= this.head.next();
+        this.head= this.head.next;
         this.size--;
         return aux;
+    }
+
+    public T removeLast(){
+        if(this.isEmpty())
+        {
+            return this.head;
+        }
+        Snode<T> aux = this.head;
+        Snode<T> prev = null;
+        while(aux.next != null)
+        {
+            prev = aux;
+            aux = aux.next;
+        }
+        prev.next = null;
+        this.size--;
+
     }
 
 
