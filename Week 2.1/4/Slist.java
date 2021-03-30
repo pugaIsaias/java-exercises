@@ -74,7 +74,7 @@ public class Slist<T>
         }
         prev.next = null;
         this.size--;
-
+        return aux;
     }
 
 
