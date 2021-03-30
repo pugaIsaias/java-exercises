@@ -46,7 +46,8 @@ public class Spoty {
     public void playThisSong(int index)
     {
         /** No devuelve nada, pero pone en reproducción la canción que corresponda con el índice indicado. */
-        
+        if (0<index && index<size)
+            this.nowPlaying = index-1;
     }
 
     public String toString()
