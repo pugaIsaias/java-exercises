@@ -22,7 +22,7 @@ public class Spoty {
     public String getActualSong() 
     {
         /**Devuelve el nombre de la canción que actualmente está reproduciéndose */
-        if (-1<this.nowPlaying && this.nowPlaying<=size)
+        if (-1<this.nowPlaying && this.nowPlaying<=this.size)
             return this.songList[this.nowPlaying];
         return "No song selected";
     }
@@ -31,13 +31,22 @@ public class Spoty {
     {
         /**No devuelve nada, pero la siguiente canción en cola se comienza a reproducir, 
          * en caso de que se este reproduciendo la ultima canción se pasa a reproducir la primera. */
-
+        this.nowPlaying++;
+        if(this.nowPlaying >= this.size)
+        {
+            this.nowPlaying = 0;
+        }
     }
 
     public void prev()
     {
         /**No devuelve nada, pero la canción anterior se comienza a reproducir, 
          * en caso se este reproduciendo la primera canción, se pasa a reproducir la última canción */
+        this.nowPlaying--;
+        if(this.nowPlaying <= -1)
+        {
+            this.nowPlaying = this.size-1;
+        }
 
     }
 
@@ -51,7 +60,7 @@ public class Spoty {
     public void playThisSong(int index)
     {
         /** No devuelve nada, pero pone en reproducción la canción que corresponda con el índice indicado. */
-        if (0<index && index<size+1)
+        if (0<index && index<=this.size)
             this.nowPlaying = index-1;
     }
 
