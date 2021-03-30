@@ -105,7 +105,8 @@ public class Slist<T>
         return aux.data;
     }
 
-    public String toString(){
+    public String toString()
+    {
         String result = "";
         Snode<T> aux = this.head;
         for (int i=0; i<this.size; i++){
