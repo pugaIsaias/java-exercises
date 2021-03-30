@@ -105,4 +105,13 @@ public class Slist<T>
         return aux;
     }
 
+    public String toString(){
+        String result = "";
+        Snode<T> aux = this.head;
+        for (int i=0; i<this.size; i++){
+            result+=" "+aux.data || aux.data.toString()+" |";
+            aux = aux.next;
+        }
+        return result;
+    }
 }
