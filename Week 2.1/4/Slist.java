@@ -49,7 +49,8 @@ public class Slist<T>
         this.size++; 
     }
 
-    public T removeFirst(){
+    public T removeFirst()
+    {
         if(this.isEmpty())
         {
             return this.head;
@@ -60,7 +61,8 @@ public class Slist<T>
         return aux;
     }
 
-    public T removeLast(){
+    public T removeLast()
+    {
         if(this.isEmpty())
         {
             return this.head;
@@ -77,5 +79,8 @@ public class Slist<T>
         return aux;
     }
 
+    public remove(int Index)
+    {
 
+    }
 }
